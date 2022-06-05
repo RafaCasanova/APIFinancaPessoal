@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class ComprasController {
     }
 
     @PostMapping
-    public ResponseEntity<DespesaDTO> cadastrar(@RequestBody DespesaForm form, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<DespesaDTO> cadastrar(@RequestBody @Valid DespesaForm form, UriComponentsBuilder uriBuilder){
         Despesa despesa = form.converter();
         despesaRepository.save(despesa);
         URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(despesa.getId()).toUri();
