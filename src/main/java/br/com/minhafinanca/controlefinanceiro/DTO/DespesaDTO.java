@@ -17,8 +17,6 @@ public class DespesaDTO {
 
     private String nome;
 
-    private String descricao;
-
     private BigDecimal valor;
 
     private String dataDeCompra;
@@ -28,7 +26,6 @@ public class DespesaDTO {
         this.nome = despesa.getNome();
         this.valor = despesa.getValor();
         this.dataDeCompra = despesa.getDataDeCompra();
-        this.descricao = despesa.getDescricao();
     }
     public  static List<DespesaDTO> converte(List<Despesa> despesa){
         return despesa.stream().map(DespesaDTO::new).collect(Collectors.toList());
